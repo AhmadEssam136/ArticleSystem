@@ -18,3 +18,14 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->middleware('checkauth');
+
+Route::get('/homeUser',function (){
+    return view('homeUser');
+});
+
+Route::resource('articles', 'ArticleController');

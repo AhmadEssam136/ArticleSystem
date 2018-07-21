@@ -22,11 +22,15 @@ class Article extends Model
 
     protected $dates = ['deleted_at'];
 
+    public function user(){
+        return $this->belongsTo('app\User');
+    }
 
     public $fillable = [
         'title',
         'description',
-        'image'
+        'image',
+        'user_id'
     ];
 
     /**
@@ -47,7 +51,7 @@ class Article extends Model
     public static $rules = [
         'title' => 'required',
         'description' => 'required',
-        'image'=> 'required'
+        'image'=> 'required |mimes:jpg,png'
     ];
 
     

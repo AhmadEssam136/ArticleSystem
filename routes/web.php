@@ -28,4 +28,13 @@ Route::get('/homeUser',function (){
     return view('homeUser');
 });
 
-Route::resource('articles', 'ArticleController');
+Route::resource('articles', 'ArticleController')->middleware('checkauth');
+
+Route::post('/', 'ArticleUser@store');
+
+
+Route::get('/Articlesuser',function (){
+    return view('Articles');
+
+});
+

@@ -13,8 +13,9 @@
                                 {{ session('status') }}
                             </div>
                         @endif
+                            {!! Form::open(['action'=>'ArticleUser@store' , 'method'=>'POST' , 'files'=>true]) !!}
 
-                            <form class="form-horizontal">
+                                {{csrf_field()}}
                                 <fieldset>
 
                                     <!-- Form Name -->
@@ -24,7 +25,7 @@
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="article_title">Title</label>
                                         <div class="col-md-4">
-                                            <input id="article_title" name="article_title" type="text" placeholder="article title" class="form-control input-md">
+                                            <input id="article_title" name="title" type="text" placeholder="article title" class="form-control input-md" required="">
 
                                         </div>
                                     </div>
@@ -36,7 +37,7 @@
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="source_image">Image</label>
                                         <div class="col-md-4">
-                                            <input id="source_image" name="source_image" class="input-file" type="file">
+                                            <input id="source_image" name="image" class="input-file" type="file" required="">
                                         </div>
                                     </div>
 
@@ -44,14 +45,13 @@
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="source_description">Description</label>
                                         <div class="col-md-4">
-                                            <textarea class="form-control" id="source_description" name="source_description"></textarea>
+                                            <textarea class="form-control" id="source_description" name="description" required=""></textarea>
                                         </div>
                                     </div>
 
                                 </fieldset>
-                                <button type="button" class="btn btn-primary">Publish</button>
-
-                            </form>
+                                {{Form::submit('Submit',['class'=>'btn btn-primart'])}}
+                            {!! Form::close() !!}
                     </div>
                 </div>
             </div>

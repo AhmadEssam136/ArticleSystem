@@ -13,4 +13,10 @@ class Article extends Model
     protected $fillable = [
         'title', 'description', 'image','user_id'
     ];
+
+    public static $rules = [
+        'title' => 'required',
+        'description' => 'required',
+        'image'=> 'required |mimes:jpg,png'
+    ];
 }

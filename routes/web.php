@@ -30,11 +30,10 @@ Route::get('/homeUser',function (){
 
 Route::resource('articles', 'ArticleController')->middleware('checkauth');
 
-Route::post('/', 'ArticleUser@store');
+Route::post('/', 'ArticleUserController@store');
+
+Route::get('/Articlesuser', 'ArticleUserController@view');
 
 
-Route::get('/Articlesuser',function (){
-    return view('Articles');
-
-});
+Route::get('/article/{id}/edit' , 'ArticleUserController@edit')->name('edit');
 

@@ -13,7 +13,7 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                            {!! Form::open(['action'=>'ArticleUser@store' , 'method'=>'POST' , 'files'=>true]) !!}
+                            {!! Form::open(['action'=>'ArticleUserController@store' , 'method'=>'POST' , 'files'=>true]) !!}
 
                                 {{csrf_field()}}
                                 <fieldset>

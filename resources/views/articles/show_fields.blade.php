@@ -19,7 +19,7 @@
 <!-- Name of the user Field -->
 <div class="form-group">
     {!! Form::label('name', 'Name of the user:') !!}
-    <p>{!! $user->name !!}</p>
+    <p>{!! $article->user->name !!}</p>
 </div>
 
 <!-- Created At Field -->

@@ -17,8 +17,8 @@
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
+            <a class="navbar-brand" href="{{ url('/homeUser') }}">
+                Home
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -30,6 +30,9 @@
 
                 </ul>
 
+                <a class="navbar-brand" href="{{ url('Articlesuser') }}">
+                    Show all articles
+                </a>
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
@@ -56,12 +59,17 @@
                         </li>
                         @endguest
                 </ul>
+
             </div>
         </div>
     </nav>
 
     <main class="py-4">
-        @yield('content')
+
+
+             @yield('content')
+
+
     </main>
 </div>
 

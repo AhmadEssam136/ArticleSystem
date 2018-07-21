@@ -51,7 +51,7 @@ class Article extends Model
     public static $rules = [
         'title' => 'required',
         'description' => 'required',
-        'image'=> 'required |mimes:jpg,png'
+        'image'=> 'required | mimes:jpg,png,jpeg',
     ];
 
     

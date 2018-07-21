@@ -107,7 +107,7 @@ class ArticleController extends AppBaseController
             return redirect(route('articles.index'));
         }
 
-        return view('articles.show')->with('article', $article)->with('user',$user);
+        return view('articles.show')->with('article', $article);
     }
 
     /**

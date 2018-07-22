@@ -15,7 +15,6 @@
                         @endif
                             {!! Form::open(['action'=>'ArticleUserController@store' , 'method'=>'POST' , 'files'=>true]) !!}
 
-                                {{csrf_field()}}
                                 <fieldset>
 
                                     <!-- Form Name -->

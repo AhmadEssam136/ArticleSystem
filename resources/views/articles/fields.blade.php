@@ -14,10 +14,10 @@
 
 <div class="form-group col-sm-6">
     {!! Form::label('image', 'Image:') !!}
-    @if(isset($article->image))
-        {!! Form::file('image', null , ['class' => 'form-control']) !!}
+    {!! Form::file('image', null , ['class' => 'form-control']) !!}
 
-        <img src="{{ asset($article->image) }}" height="200" width="150">
+@if(isset($article->image))
+        <img src="{{asset('public/upload/') . '/' . $article->image}}" height="200" width="150">
     @endif
 
 

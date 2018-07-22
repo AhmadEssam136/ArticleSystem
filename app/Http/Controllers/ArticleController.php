@@ -158,7 +158,7 @@ class ArticleController extends AppBaseController
 
             $request->image->move(public_path()."/upload",$fileName);
 
-            $request['image'] = $fileName;
+            $input['image'] = $fileName;
 
         }
 

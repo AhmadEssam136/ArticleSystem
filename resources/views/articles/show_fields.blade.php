@@ -16,7 +16,7 @@
 
     @if(isset($article->image))
 
-        <img src="{{ asset($article->image) }}" height="200" width="150">
+        <img src="{{asset('public/upload/').'/'.$article->image}}" height="200" width="150">
 
     @endif
 

@@ -35,14 +35,11 @@ class ArticleUserController extends AppBaseController
 
             $fileName = time().'.'.$request->file('image')->extension();
 
-            $destinationPath = 'public/upload/';
-
-
             $fileSize = $request->image->getClientSize();
 
-            $request->image->move($destinationPath,$fileName);
+            $request->image->move(public_path()."/upload",$fileName);
 
-            $input['image'] = $destinationPath.$fileName;
+            $input['image'] = $fileName;
 
         }
 
@@ -74,7 +71,6 @@ class ArticleUserController extends AppBaseController
 
         $user = Auth::user();
 
-
         if (empty($article)) {
             Flash::error('Article not found');
 
@@ -88,32 +84,35 @@ class ArticleUserController extends AppBaseController
     {
         $article = Article::find($id);
 
+
         if (empty($article)) {
             Flash::error('Article not found');
 
             return redirect(route('Articlesuser'));
         }
 
-       if($request->input('image')) {
+
+
            if ($request->hasFile('image')) {
 
-               $fileName = time() . '.' . $request->file('image')->extension();
-
-               $destinationPath = 'public/upload/';
+               $fileName = time().'.'.$request->file('image')->extension();
 
                $fileSize = $request->image->getClientSize();
 
-               $request->image->move($destinationPath , $fileName);
+               $request->image->move(public_path()."/upload",$fileName);
 
-               $request['image'] = $destinationPath . $fileName;
+               $input['image'] = $fileName;
 
            }
-       }
 
-        $article = Article::whereId($id)->update(['title'=> $request->input('title') , 'description' => $request->input('description') , 'image'=> $request->input('image')]);
+
+
+
+        $article = Article::whereId($id)->update($request->except(['_token']));
 
         Flash::success('Article updated successfully.');
 
         return redirect(route('Articlesuser'));
+
     }
 }

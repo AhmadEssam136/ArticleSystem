@@ -28,7 +28,7 @@ class UpdateArticleRequest extends FormRequest
         return [
         'title' => 'required',
         'description' => 'required',
-        'image'=> 'nullable | mimes:jpg,png,jpeg',
+        'image'=> 'mimes:jpg,png,jpeg',
 
         ];
     }

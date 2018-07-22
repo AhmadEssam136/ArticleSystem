@@ -84,6 +84,8 @@ class ArticleUserController extends AppBaseController
     {
         $article = Article::find($id);
 
+        $input = $request->except('_token');
+
 
         if (empty($article)) {
             Flash::error('Article not found');
@@ -108,7 +110,7 @@ class ArticleUserController extends AppBaseController
 
 
 
-        $article = Article::whereId($id)->update($request->except(['_token']));
+        $article = Article::whereId($id)->update($input);
 
         Flash::success('Article updated successfully.');
 

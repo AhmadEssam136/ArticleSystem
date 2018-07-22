@@ -144,11 +144,8 @@ class ArticleController extends AppBaseController
     {
         $article = $this->articleRepository->findWithoutFail($id);
 
-        if (empty($article)) {
-            Flash::error('Article not found');
+        $input = $request->all();
 
-            return redirect(route('articles.index'));
-        }
 
         if($request->hasFile('image')) {
 
@@ -162,7 +159,16 @@ class ArticleController extends AppBaseController
 
         }
 
-        $article = $this->articleRepository->update($request->all(), $id);
+
+        if (empty($article)) {
+            Flash::error('Article not found');
+
+            return redirect(route('articles.index'));
+        }
+
+
+
+        $article = $this->articleRepository->update($input, $id);
 
         Flash::success('Article updated successfully.');
 

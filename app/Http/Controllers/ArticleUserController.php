@@ -35,11 +35,14 @@ class ArticleUserController extends AppBaseController
 
             $fileName = time().'.'.$request->file('image')->extension();
 
+            $destinationPath = 'public/upload/';
+
+
             $fileSize = $request->image->getClientSize();
 
-            $request->image->move(public_path()."/upload",$fileName);
+            $request->image->move($destinationPath,$fileName);
 
-            $input['image'] = $fileName;
+            $input['image'] = $destinationPath.$fileName;
 
         }
 
@@ -67,7 +70,8 @@ class ArticleUserController extends AppBaseController
 
     public function edit($id)
     {
-        $article = $this->ArticleRepository->findWithoutFail($id);
+        $article = Article::find($id);
+
         $user = Auth::user();
 
 
@@ -82,30 +86,34 @@ class ArticleUserController extends AppBaseController
 
     public function update($id, UpdateArticleRequest $request)
     {
-        $article = $this->ArticleRepository->findWithoutFail($id);
+        $article = Article::find($id);
 
         if (empty($article)) {
             Flash::error('Article not found');
 
-            return redirect(route('articles.index'));
+            return redirect(route('Articlesuser'));
         }
 
-        if($request->hasFile('image')) {
+       if($request->input('image')) {
+           if ($request->hasFile('image')) {
 
-            $fileName = time().'.'.$request->file('image')->extension();
+               $fileName = time() . '.' . $request->file('image')->extension();
 
-            $fileSize = $request->image->getClientSize();
+               $destinationPath = 'public/upload/';
 
-            $request->image->move(public_path()."/upload",$fileName);
+               $fileSize = $request->image->getClientSize();
 
-            $request['image'] = $fileName;
+               $request->image->move($destinationPath , $fileName);
 
-        }
+               $request['image'] = $destinationPath . $fileName;
 
-        $article = $this->articleRepository->update($request->all(), $id);
+           }
+       }
+
+        $article = Article::whereId($id)->update(['title'=> $request->input('title') , 'description' => $request->input('description') , 'image'=> $request->input('image')]);
 
         Flash::success('Article updated successfully.');
 
-        return redirect(route('articles.index'));
+        return redirect(route('Articlesuser'));
     }
 }

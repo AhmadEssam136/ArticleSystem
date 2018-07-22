@@ -14,9 +14,14 @@
 
 <div class="form-group col-sm-6">
     {!! Form::label('image', 'Image:') !!}
-    {!! Form::file('image', null, ['class' => 'form-control']) !!}
-</div>
+    @if(isset($article->image))
+        {!! Form::file('image', null , ['class' => 'form-control']) !!}
 
+        <img src="{{ asset($article->image) }}" height="200" width="150">
+    @endif
+
+
+</div>
 <!-- user id Field -->
 
 <div class="form-group col-sm-6">

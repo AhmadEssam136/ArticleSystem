@@ -11,7 +11,7 @@
         <div class="box box-primary">
             <div class="box-body">
                 <div class="row">
-                    {!! Form::model($article, ['route' => ['articles.update', $article->id], 'method' => 'patch' , 'files'=>true]) !!}
+                    {!! Form::model($article, ['route' => ['updateArticle', $article->id], 'method' => 'post' , 'files'=>true]) !!}
 
                     @include('editFields')
 

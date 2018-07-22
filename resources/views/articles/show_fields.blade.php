@@ -11,9 +11,18 @@
 </div>
 
 <!-- image Field -->
-<div class="form-group">
+<div class="form-group col-sm-6">
     {!! Form::label('image', 'Image:') !!}
-    <p>{!! $article->image !!}</p>
+
+    @if(isset($article->image))
+
+        <img src="{{ asset($article->image) }}" height="200" width="150">
+
+    @endif
+
+
+
+
 </div>
 
 <!-- Name of the user Field -->

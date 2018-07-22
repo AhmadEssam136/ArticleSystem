@@ -16,20 +16,33 @@
 
 
                             @foreach($articles as $article)
+
                         <div class="blog-post">
                             <h2 class="blog-post-title">{{$article->title}}</h2>
                             <p class="blog-post-meta">{{$article->created_at->toFormattedDateString()}} by <a href="#">{{$article->user->name}}</a></p>
                             {{$article->description}}
                         </div>
+<br>
+                                <div class="blog-post">
+                                    @if(isset($article->image))
+
+                                        <img src="{{ asset($article->image) }}" height="200" width="150">
+                                    @endif
+
+
+                                </div>
                                 <br>
 
                             @if($article->user_id == $user->id)
                             <div>
-                                {{Form::submit('Update',['class'=>'btn btn-primart' , 'route'=>'edit'])}}
+                                <a href="{!! route('edit', [$article->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i>Update</a>
+
                             </div>
-                                @endif
+                             @endif
                             ----------------------------------------------------
                             @endforeach
+
+
 
                     </div>
                 </div>

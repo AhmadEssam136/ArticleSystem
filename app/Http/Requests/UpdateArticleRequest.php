@@ -25,6 +25,11 @@ class UpdateArticleRequest extends FormRequest
      */
     public function rules()
     {
-        return Article::$rules;
+        return [
+        'title' => 'required',
+        'description' => 'required',
+        'image'=> 'nullable | mimes:jpg,png,jpeg',
+
+        ];
     }
 }

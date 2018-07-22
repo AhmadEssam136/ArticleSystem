@@ -14,12 +14,18 @@
 
 <div class="form-group col-sm-6">
     {!! Form::label('image', 'Image:') !!}
-    {!! Form::file('image', null, ['class' => 'form-control']) !!}
+    @if(isset($article->image))
+        {!! Form::file('image', null , ['class' => 'form-control']) !!}
+
+        <img src="{{ asset($article->image) }}" height="200" width="150">
+    @endif
+
+
 </div>
 
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{!! route('Articlesuser') !!}" class="btn btn-default">Cancel</a>
+    {!! Form::submit('Save', ['class' => 'btn btn-primary'] , route('Articlesuser')) !!}
+    <a href="{!! route('homeuser') !!}" class="btn btn-default">Cancel</a>
 </div>
